@@ -12,7 +12,8 @@ Depends:
 Imports:
     assertthat,
     DBI,
-    RMSSQL,
+    RSQLServer,
+    rJava,
     stringr,
     dplyr
 Enhances: dplyr
