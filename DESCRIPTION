@@ -13,7 +13,6 @@ Imports:
     assertthat,
     DBI,
     RSQLServer,
-    rJava,
     stringr,
     dplyr
 Enhances: dplyr
