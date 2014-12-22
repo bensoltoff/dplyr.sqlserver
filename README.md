@@ -8,9 +8,9 @@ SQL Server source driver for dplyr
 requirements
 ===============
 
-    devtools::install_github("RSQLServer", "hs3180")
+    devtools::install_github("RSQLServer")
 
 install
 ===============
 
-    devtools::install_github("dplyr.sqlserver", "hs3180")
+    devtools::install_github("GilbertWatson/dplyr.sqlserver")
