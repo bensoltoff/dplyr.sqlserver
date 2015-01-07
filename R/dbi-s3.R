@@ -2,12 +2,10 @@ table_fields <- function(con, table) {
   qry_fields(con, as.character(table))
 }
 
-qry_fetch <- function(con, sql, n = -1L,
-                      show = getOption("dplyr.show_sql"),
-                      explain = getOption("dplyr.explain_sql")) {
-  
-  if (show) message(sql)
-  if (explain) message(qry_explain(con, sql))
+
+
+qry_fetch <- function(con, sql, n = -1L) {
+
   
   res <- dbSendQuery(con, sql)
   on.exit(dbClearResult(res))
@@ -32,11 +30,7 @@ res_warn_incomplete <- function(res) {
 sql_insert_into <- function(con, table, values) {
   
   MAX_INSERT_ROWS <- 1000
-  qry_run <- function(con, sql, 
-                      show = getOption("dplyr.show_sql"),
-                      explain = getOption("dplyr.explain_sql")) {
-    if (show) message(sql)
-    if (explain) message(qry_explain(con, sql))
+  qry_run <- function(con, sql) {
     
     dbSendUpdate(con, sql)
     
