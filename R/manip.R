@@ -34,11 +34,7 @@ copy_to.src_sqlserver <- function(dest, df, name = deparse(substitute(df)),
                                   analyze = TRUE, create = TRUE, ...) {
   assert_that(is.data.frame(df), is.string(name), is.flag(temporary))
   
-  qry_run <- function(con, sql, 
-                      show = getOption("dplyr.show_sql"),
-                      explain = getOption("dplyr.explain_sql")) {
-    if (show) message(sql)
-    if (explain) message(qry_explain(con, sql))
+  qry_run <- function(con, sql) {
     
     dbSendUpdate(con, sql)
     
