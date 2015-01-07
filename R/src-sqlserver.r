@@ -11,7 +11,7 @@ src_sqlserver <- function(dbname, host = NULL, user = "root",
   
   drv <- SQLServer() 
   
-  con <- dbConnect(drv, sprintf("jdbc:sqlserver://%s; DatabaseName=%s", host, dbname), user, password)
+  con <- dbConnect(drv, sprintf("%s; DatabaseName=%s", host, dbname), user, password)
   info <- dbGetInfo(con)
   
   src_sql("sqlserver", con, 
