@@ -75,6 +75,20 @@ translate_env.src_sqlserver <- function(x) {
 }
 
 #' @export
+src_translate_env.src_sqlserver <- function(x) {
+  sql_variant(
+    base_scalar,
+    sql_translator(.parent = base_agg,
+                   n = function() sql("count(*)"),
+                   sd =  sql_prefix("stddev_samp"),
+                   var = sql_prefix("var_samp"),
+                   paste = function(x, collapse) build_sql("group_concat(", x, collapse, ")")
+    )
+  )
+}
+
+
+#' @export
 sql_select.SQLServerConnection <- function(con, select, from, where = NULL, group_by = NULL,
                        having = NULL, order_by = NULL, limit = NULL, 
                        offset = NULL) {
